@@ -3,6 +3,7 @@ resource "aws_launch_configuration" "aslc" {
   image_id      = var.image_id
   instance_type = var.instance_type
   security_groups    = var.security_groups
+  user_data = "${file("userdata.sh")}"
   }
 resource "aws_autoscaling_group" "bar" {
   name                 = var.name 
