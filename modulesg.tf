@@ -3,8 +3,7 @@ resource "aws_launch_configuration" "as_conf" {
   image_id      = var.image_id
   instance_type = var.instance_type
   security_groups    = var.security_groups
-  user_data = "${file("userdata.sh")}"
-}
+  }
 resource "aws_autoscaling_group" "bar" {
   name                 = var.name 
   depends_on           = ["aws_launch_configuration.as_conf","aws_lb_target_group.test"]
