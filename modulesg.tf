@@ -5,7 +5,7 @@ resource "aws_launch_configuration" "aslc" {
   security_groups    = var.security_groups
   user_data = "${file("userdata.sh")}"
   }
-resource "aws_autoscaling_group" "bar" {
+resource "aws_autoscaling_group" "asg1" {
   name                 = var.name 
   depends_on           = ["aws_launch_configuration.aslc","aws_lb_target_group.test"]
   launch_configuration = aws_launch_configuration.aslc.name
