@@ -7,10 +7,11 @@ resource "aws_launch_configuration" "aslc" {
   }
 resource "aws_autoscaling_group" "asg1" {
   name                 = var.name 
-  depends_on           = ["aws_launch_configuration.aslc","aws_lb_target_group.test"]
+  depends_on           = ["aws_launch_configuration.aslc"]
   launch_configuration = aws_launch_configuration.aslc.name
   min_size             = 1
   max_size             = 2
   desired_capacity     = 1
+  target_group_arns   = [var.target_group_arns]
  availability_zones = var.availability_zones
 }
